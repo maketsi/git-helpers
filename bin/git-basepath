@@ -1,0 +1,12 @@
+#!/bin/bash
+# Prints out the base path of the current GIT repository you are currently in
+
+cd -P .
+root="$(
+    while [ ! -e .git ]; do
+        [ "$(pwd)" = / ] && exit 1
+        cd ..
+    done
+    pwd
+)" || die "Not a git repository."
+echo $root

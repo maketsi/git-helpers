@@ -1,0 +1,8 @@
+#!/bin/bash
+# Creates clean tgz archive of the current (git) directory (and branch), leaving out git metadata.
+
+cd -P .
+cd "$(git-basepath)"
+dir=$(basename "$(pwd)")
+branch=$(git branch --format '%(refname:short)')
+git archive --format tgz --prefix "$dir/" -o "../$dir.tgz" "$branch" && echo "Created $dir.tgz for branch '$branch' in $(cd ..;pwd)"

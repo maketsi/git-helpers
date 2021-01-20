@@ -1,0 +1,5 @@
+#!/bin/bash
+# List files that belong to this GIT repository that you are currently in,
+# using the committed file data.
+
+git ls-tree --full-tree -r --name-only HEAD
